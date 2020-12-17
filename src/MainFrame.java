@@ -130,6 +130,7 @@ Double.SIZE/8 байт;
         fileLoaded = true;
 // Вызывать метод отображения графика
         display.showGraphics(graphicsData);
+        display.repaint();
         }
 // Шаг 5 - Закрыть входной поток
         in.close();

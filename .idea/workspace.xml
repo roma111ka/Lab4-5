@@ -22,7 +22,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Lab_5" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -58,26 +58,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1223" y="422" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1605538366085" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1608190942069">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1608191368377">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1608190942069" />
-    <state width="1899" height="287" key="GridCell.Tab.0.bottom" timestamp="1608190952685">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1608191368377" />
+    <state width="963" height="286" key="GridCell.Tab.0.bottom" timestamp="1608192154878">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608190952685" />
-    <state width="1899" height="287" key="GridCell.Tab.0.center" timestamp="1608190952685">
+    <state width="963" height="286" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608192154878" />
+    <state width="963" height="286" key="GridCell.Tab.0.center" timestamp="1608192154878">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="287" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608190952685" />
-    <state width="1899" height="287" key="GridCell.Tab.0.left" timestamp="1608190952685">
+    <state width="963" height="286" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608192154878" />
+    <state width="963" height="286" key="GridCell.Tab.0.left" timestamp="1608192154878">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="287" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608190952685" />
-    <state width="1899" height="287" key="GridCell.Tab.0.right" timestamp="1608190952685">
+    <state width="963" height="286" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608192154878" />
+    <state width="963" height="286" key="GridCell.Tab.0.right" timestamp="1608192154878">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="287" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608190952685" />
+    <state width="963" height="286" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608192154878" />
     <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1605970861367">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -100,7 +100,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GraphicsDisplay.java</url>
-          <line>82</line>
+          <line>86</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

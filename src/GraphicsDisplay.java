@@ -28,6 +28,8 @@ public class GraphicsDisplay extends JPanel {
     private double scale;
     // Различные стили черчения линий
     private BasicStroke graphicsStroke;
+    private BasicStroke graphicsStroke1;
+    private BasicStroke gridStroke;
     private BasicStroke axisStroke;
     private BasicStroke markerStroke;
     // Различные шрифты отображения надписей
@@ -37,9 +39,11 @@ public class GraphicsDisplay extends JPanel {
         setBackground(Color.WHITE);
 // Сконструировать необходимые объекты, используемые в рисовании
 // Перо для рисования графика
-        graphicsStroke = new BasicStroke(2.0f, BasicStroke.CAP_BUTT,
-                BasicStroke.JOIN_ROUND, 10.0f, null, 0.0f);
-// Перо для рисования осей координат
+        graphicsStroke = new BasicStroke(3.0f, BasicStroke.CAP_BUTT,
+                BasicStroke.JOIN_ROUND, 10.0f, new float[]{2,1,1,1,1,1,1,2,1,1,1,2}, 0.0f);
+        graphicsStroke1 = new BasicStroke(3.0f, BasicStroke.CAP_BUTT,
+                BasicStroke.JOIN_ROUND, 10.0f, new float[]{10,1,1,1,1,1,1,2,1,1,1,2}, 0.0f);
+        gridStroke = new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND, 10.0f, null, 0.0f);
         axisStroke = new BasicStroke(2.0f, BasicStroke.CAP_BUTT,
                 BasicStroke.JOIN_MITER, 10.0f, null, 0.0f);
 // Перо для рисования контуров маркеров
@@ -156,16 +160,9 @@ minY
     }
     // Отрисовка графика по прочитанным координатам
     protected void paintGraphics(Graphics2D canvas) {
-// Выбрать линию для рисования графика
         canvas.setStroke(graphicsStroke);
-// Выбрать цвет линии
         canvas.setColor(Color.RED);
-/* Будем рисовать линию графика как путь, состоящий из множества
-сегментов (GeneralPath)
-* Начало пути устанавливается в первую точку графика, после чего
-прямой соединяется со
-* следующими точками
-*/
+
         GeneralPath graphics = new GeneralPath();
         for (int i=0; i<graphicsData.length; i++) {
 // Преобразовать значения (x,y) в точку на экране point
@@ -184,31 +181,48 @@ minY
     }
     // Отображение маркеров точек, по которым рисовался график
     protected void paintMarkers(Graphics2D canvas) {
-// Шаг 1 - Установить специальное перо для черчения контуров
-      //  маркеров
-        canvas.setStroke(markerStroke);
-// Выбрать красный цвета для контуров маркеров
-        canvas.setColor(Color.RED);
-// Выбрать красный цвет для закрашивания маркеров внутри
-        canvas.setPaint(Color.RED);
-// Шаг 2 - Организовать цикл по всем точкам графика
-        for (Double[] point: graphicsData) {
-// Инициализировать эллипс как объект для представления
-         //   маркера
-            Ellipse2D.Double marker = new Ellipse2D.Double();
-/* Эллипс будет задаваться посредством указания координат
-его центра
-и угла прямоугольника, в который он вписан */
-// Центр - в точке (x,y)
-            Point2D.Double center = xyToPoint(point[0], point[1]);
-// Угол прямоугольника - отстоит на расстоянии (3,3)
-            Point2D.Double corner = shiftPoint(center, 3, 3);
-// Задать эллипс по центру и диагонали
-            marker.setFrameFromCenter(center, corner);
-            canvas.draw(marker); // Начертить контур маркера
-            canvas.fill(marker); // Залить внутреннюю область маркера
+        for (Double[] point : graphicsData) {
+        boolean temp = true;
+        int sum=0;
+        int znach = (int)(double)point[1];
+        while(znach!=0)
+        {
+            sum+=znach%10;
+            znach/=10;
         }
+        if (sum<10)
+        {
+            temp=true;
+        }else {temp=false;}
+
+        if (!temp) {
+            // Выбрать красный цвета для контуров маркеров
+            canvas.setColor(Color.RED);
+            // Выбрать красный цвет для закрашивания маркеров внутри
+            canvas.setPaint(Color.RED);
+        } else {
+            // Выбрать красный цвета для контуров маркеров
+            canvas.setColor(Color.BLUE);
+            // Выбрать красный цвет для закрашивания маркеров внутри
+            canvas.setPaint(Color.BLUE);
+        }
+        canvas.setStroke(markerStroke);
+        GeneralPath path = new GeneralPath();
+        Point2D.Double center = xyToPoint(point[0], point[1]);
+        Ellipse2D.Double marker = new Ellipse2D.Double();
+        Point2D.Double corner = shiftPoint(center, 3, 8);
+
+        marker.setFrameFromCenter(center, corner);
+
+        Ellipse2D.Double marker1 = new Ellipse2D.Double();
+        Point2D.Double corner1= shiftPoint(center, 8, 3);
+
+        marker1.setFrameFromCenter(center, corner1);
+        canvas.draw(marker);
+        canvas.draw(marker1);
     }
+    }
+
     // Метод, обеспечивающий отображение осей координат
     protected void paintAxis(Graphics2D canvas) {
 // Установить особое начертание для осей
