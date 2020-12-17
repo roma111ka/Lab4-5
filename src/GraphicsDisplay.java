@@ -149,6 +149,7 @@ minY
         if (showAxis) paintAxis(canvas);
 // Затем отображается сам график
         paintGraphics(canvas);
+        paintNewGraphics(canvas);
 // Затем (если нужно) отображаются маркеры точек, по которым
      //   строился график.
         if (showMarkers) paintMarkers(canvas);
@@ -178,6 +179,30 @@ minY
         }
 // Отобразить график
         canvas.draw(graphics);
+    }
+    protected void paintNewGraphics(Graphics2D canvas) {
+        // Выбрать линию для рисования графика
+        canvas.setStroke(graphicsStroke1);
+        // Выбрать цвет линии
+        canvas.setColor(Color.GREEN);
+        /* Будем рисовать линию графика как путь, состоящий из множества
+        сегментов (GeneralPath). Начало пути устанавливается в первую точку
+        графика, после чего прямой соединяется со следующими точками */
+        GeneralPath graphicsq = new GeneralPath();
+        for (int i = 0; i < graphicsData.length; i++) {
+            // Преобразовать значения (x,y) в точку на экране point
+            Point2D.Double point = xyToPoint(graphicsData[i][0], graphicsData[i][1]);
+            if (i > 0) {
+                // Не первая итерация – вести линию в точку point
+                graphicsq.lineTo((int)point.getX(), (int)point.getY());
+            } else {
+                // Первая итерация - установить начало пути в точку point
+                graphicsq.moveTo((int)point.getX(), (int)point.getY());
+            }
+        }
+
+        // Отобразить график
+        canvas.draw(graphicsq);
     }
     // Отображение маркеров точек, по которым рисовался график
     protected void paintMarkers(Graphics2D canvas) {
